@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li *ngFor="let movie of favs">
+          <a (dragstart)="onDragStart($event, movie)" href="#">{{movie.title}}</a>
+        </li>
+      </ul>
+      <div (drop)="removeFav($event)" (dragover)="allowDrop($event)" class='trash'></div>
+    </div>
+
+    <div class="col-md-9">
+      <div class="row" *ngFor="let movie of nonFavs">
+        <div class="col-md-2">
+          <a>
+            <img class="thumbnail" alt="Thumbnail" src="/assets/img-movies/{{movie.id}}-tn.jpg">
+          </a>
+        </div>
+        <div (mouseover)="highlightRow(movie)" class="col-md-5">
+          <div class="title"><a>{{movie.title}}</a></div>
+          <div class="description">{{movie.description}}</div>
+          <div *ngIf="movie.title === selectedTitle" class="favourite" (click)="addFav(movie)"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

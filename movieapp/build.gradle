@@ -1,0 +1,46 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.7.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+	id 'com.google.cloud.tools.jib' version '1.8.0'
+}
+
+group = 'com.hoangmn'
+version = '1.0'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.0'
+	runtimeOnly 'com.h2database:h2'
+}
+
+jib {
+	from {
+		image = "openjdk:11"
+		auth {
+			username = 'thayhoang'
+			password = 'minhhoang'
+		}
+	}
+	to {
+		image = "thayhoang/movieapp"
+		tags = ["angularlatest"]
+		auth {
+			username = 'thayhoang'
+			password = 'minhhoang'
+		}
+	}
+
+	container {
+		ports = ['8080']
+		labels = [
+				maintainer: "HoangN",
+		]
+	}
+}

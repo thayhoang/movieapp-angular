@@ -1,0 +1,72 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+body {
+  padding-top: 100px;
+}
+
+a {
+  cursor: pointer;
+}
+
+.red {
+  color: #ff0000;
+}
+
+.grey {
+  color: rgba(128, 128, 128, 0.25);
+}
+
+table td {
+  position: relative;
+}
+
+table td input {
+  position: absolute;
+  display: block;
+  top:0;
+  left:0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  border: none;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.trash, .favourite {
+  background-image: url(/assets/img/sprites.png);
+  background-repeat: no-repeat;
+}
+
+.trash {
+  margin: 30px 0 30px 15px;
+  padding-top: 20px;
+  background-position: 0 0;
+  width: 60px;
+  height: 60px;
+}
+
+.trash:hover,.trash_hover {
+  background-position: 0 -61px;
+}
+
+.title a {
+  font-size: 1.1em;
+  color: #438BC5;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  text-decoration: none;
+}
+
+.favourite {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  background-position: 0 -154px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}

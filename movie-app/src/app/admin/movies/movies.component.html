@@ -1,0 +1,34 @@
+<div class="container">
+<table class="table table-hover table-bordered">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Trailer</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody (mouseleave)="reset()">
+  <tr *ngFor="let movie of movies;" (mouseover)="highlightRow(movie)">
+    <td><input name="title" (keyup)="onKey($event, movie)" [value]="movie.title"/></td>
+    <td><input name="description" (keyup)="onKey($event, movie)" [value]="movie.description"/></td>
+    <td><input name="trailer" (keyup)="onKey($event, movie)" [value]="movie.trailer"/></td>
+    <td>
+      <a (click)="deleteMovie(movie)">
+        <span class="glyphicon glyphicon-remove" [ngClass]="movie.title === selectedTitle ?'red':'grey'"></span>
+      </a>
+    </td>
+  </tr>
+  <tr (mouseover)="reset()">
+    <td class="newmovie"><input [(ngModel)]="newMovie.title"/></td>
+    <td class="newmovie"><input [(ngModel)]="newMovie.description"/></td>
+    <td class="newmovie"><input [(ngModel)]="newMovie.trailer"/></td>
+    <td>
+      <a (click)="addMovie()">
+        <span class="glyphicon glyphicon-plus"></span>
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</div>
